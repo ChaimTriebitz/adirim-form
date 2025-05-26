@@ -1,0 +1,28 @@
+$c1: #264653;
+$c2: #2a9d8f;
+$c3: #8ecae6;
+$c4: #219ebc;
+$c5: #023047;
+
+
+// gradients
+$g1: linear-gradient($c1, $c2, $c3);
+$g2: linear-gradient($c3, $c4, $c5);
+
+
+// breakpoints
+$mobile: 700px;
+$tablet: 900px;
+$desktop: 1200px;
+
+// light theme
+:root {
+   --main-color: #f0f0f0;
+   --txt-color: #333333;
+}
+
+// dark theme
+[data-theme='dark'] {
+   --main-color: #121212;
+   --txt-color: #e0e0e0;
+}

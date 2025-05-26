@@ -1,0 +1,190 @@
+@use './vars.scss' as *;
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   font: inherit;
+   line-height: 1.4;
+}
+
+html,
+body {
+   height: 100%;
+   overflow: hidden;
+}
+
+html {
+   color-scheme: light;
+}
+
+html:focus-within {
+   scroll-behavior: smooth;
+}
+
+body {
+   color: var(--txt-color);
+   background-color: var(--main-color);
+   text-rendering: optimizeSpeed;
+   line-height: 1.5;
+   font-size: 1em;
+   font-family: 'Poppins', sans-serif;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+div,
+section,
+header,
+article,
+footer,
+main,
+nav,
+form,
+button,
+a {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5em;
+}
+
+h1 {
+   font-size: 2.75em;
+   font-weight: 700;
+   @media (max-width: $mobile) {
+      font-size: 2.25em;
+   }
+}
+
+h2 {
+   font-size: 2.25em;
+   font-weight: 700;
+
+   @media (max-width: $mobile) {
+      font-size: 1.75em;
+   }
+}
+
+h3 {
+   font-size: 1.75em;
+   font-weight: 600;
+
+   @media (max-width: $mobile) {
+      font-size: 1.5em;
+   }
+}
+
+h4 {
+   font-size: 1.75em;
+   font-weight: 500;
+
+   @media (max-width: $mobile) {
+      font-size: 1.5em;
+   }
+}
+
+h5 {
+   font-size: 1.5em;
+   font-weight: 500;
+
+   @media (max-width: $mobile) {
+      font-size: 1.25em;
+   }
+}
+
+h6 {
+   font-size: 1.25em;
+   font-weight: 500;
+
+   @media (max-width: $mobile) {
+      font-size: 1em;
+   }
+}
+
+p {
+   font-size: 1em;
+   font-weight: 400;
+
+   @media (max-width: $mobile) {
+      font-size: 0.85em;
+   }
+}
+
+button {
+   align-items: center;
+   justify-content: center;
+
+   &[disabled] {
+      cursor: default;
+      pointer-events: none;
+      opacity: 0.5;
+   }
+}
+
+ul,
+ol {
+   list-style: none;
+}
+
+img,
+picture,
+svg {
+   display: block;
+   max-width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+img:not([src]) {
+   display: none;
+}
+
+button,
+a,
+label {
+   cursor: pointer;
+   background-color: transparent;
+   border: none;
+   text-decoration: none;
+   white-space: nowrap;
+   color: inherit;
+}
+
+input,
+select,
+textarea {
+   outline: none;
+   border: none;
+   background: none;
+   cursor: auto;
+}
+
+select {
+   cursor: pointer;
+}
+
+
+::-webkit-scrollbar {
+   width: 0.75em;
+   height: 0.75em;
+}
+
+::-webkit-scrollbar-track {
+   background: $c1;
+}
+
+::-webkit-scrollbar-thumb {
+   background: $c2;
+   border-radius: 5px;
+}
+
+::-webkit-calender-picker-indicator {
+   background: $c1;
+   padding: 0.5em;
+   cursor: pointer;
+   border-radius: 5px;
+}
