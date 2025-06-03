@@ -1,4 +1,4 @@
-import { FormPersonal } from "@/components";
+import { FormPersonal, FormSwimming } from "@/components";
 import Image from "next/image";
 
 export default function Home() {
@@ -12,6 +12,7 @@ export default function Home() {
             priority
          />
          <FormPersonal />
+         <FormSwimming />
       </main>
    );
 }

@@ -1,4 +1,4 @@
-import { Input, Select, Signature, TextArea } from '@/components'
+import { ChoiceCheckBox, Input, Select, Signature, TextArea } from '@/components'
 const InputElement = (field) => {
    const { element, id, name, type, options, handleChange, values, inputRefs } = field
 
@@ -29,16 +29,27 @@ const InputElement = (field) => {
          return (
             <Signature handleChange={handleChange} />
          )
-         case 'textarea':      return (
-            <TextArea
-               name={name}
-               id={id}
-               type={type}
-               handleChange={handleChange}
-               ref={el => inputRefs.current[name] = el}
-               value={values[name]}
-            />
-         )
+      case 'textarea': return (
+         <TextArea
+            name={name}
+            id={id}
+            type={type}
+            handleChange={handleChange}
+            ref={el => inputRefs.current[name] = el}
+            value={values[name]}
+         />
+      )
+      case 'choice-checkbox': return (
+         <ChoiceCheckBox
+            options={options}
+            name={name}
+            id={id}
+            type={type}
+            handleChange={handleChange}
+            ref={el => inputRefs.current[name] = el}
+            value={values[name]}
+         />
+      )
    }
 }
 export const Field = ({ field }) => {
