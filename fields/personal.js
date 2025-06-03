@@ -53,7 +53,6 @@ export const personal = [
    { name: 'enhance', id: 25, label: 'We would like your child to have a wonderful camp experience. is there any other information that we should know in order to enhance your childs summer?', element: 'textarea' },
    { name: 'signature', id: 26, label: 'Signature of Parent', element: 'signature' },
    { name: 'signature_date', id: 27, label: 'Date', element: 'input', type: 'datetime-local' },
-
 ]
 
 
