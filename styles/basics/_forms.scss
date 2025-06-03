@@ -1,0 +1,24 @@
+@use './vars.scss' as *;
+
+
+form {
+   padding: 1em;
+   flex-direction: row;
+   flex-wrap: wrap;
+
+   .input {
+      padding: 1em;
+      gap: 0;
+      width: fit-content;
+      background: $c3;
+   }
+
+   label {
+      color: $c1;
+   }
+
+   input {
+      border: 1px solid $c1;
+      min-width: 100%;
+   }
+}
