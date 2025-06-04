@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+   provider = "prisma-client-js"
+   output   = "../app/generated/prisma"
+}
+
+datasource db {
+   provider = "postgresql"
+   url      = env("DATABASE_URL")
+}
+
+model Personal {
+   id                      Int      @id @default(autoincrement())
+   first_name              String
+   last_name               String
+   e_date                  DateTime
+   h_date                  String
+   street_and_number       String
+   neighborhood            String
+   zip_code                Int
+   home_number             Int
+   kupha_name              String
+   kupha_number            Int
+   school                  String
+   grade_finishing         Int
+   grade_entering          Int
+   father_name             String
+   father_phone_number     Int
+   mother_name             String
+   mother_phone_number     Int
+   emergency_name          String
+   emergency_phone_number  Int
+   email                   String
+   favorite_activities     String
+   dislike_activities      String
+   allergies               String
+   freinds                 String
+   enhance                 String
+   signature_personal      String   @db.Text
+   signature_date_personal DateTime
+
+   swimming   Swimming? @relation(fields: [swimmingId], references: [id])
+   swimmingId Int?      @unique
+
+   addOns AddOn[]
+}
+
+model Swimming {
+   id                      Int      @id @default(autoincrement())
+   first_name_swimming     String
+   last_name_swimming      String
+   is_swimmer              Boolean
+   signature_swimming      String   @db.Text
+   signature_date_swimming DateTime
+
+   personal Personal?
+}
+
+model AddOn {
+   id             Int    @id @default(autoincrement())
+   name_add_ons   String
+   size_add_ons   String
+   amount_add_ons Int
+   cost_add_ons   String
+
+   personal   Personal @relation(fields: [personalId], references: [id])
+   personalId Int
+}

@@ -1,6 +1,6 @@
-import { ChoiceCheckBox, Input, Select, Signature, TextArea } from '@/components'
+import { ChoiceCheckBox, DynamicGroups, Input, Select, Signature, TextArea } from '@/components'
 const InputElement = (field) => {
-   const { element, id, name, type, options, handleChange, values, inputRefs } = field
+   const { element, id, name, type, options, handleChange, values, inputRefs, children, errors } = field
 
    switch (element) {
       case 'input':
@@ -50,15 +50,29 @@ const InputElement = (field) => {
             value={values[name]}
          />
       )
+
+      case 'dynamic-groups': return (
+         <DynamicGroups
+            name={name}
+            id={id}
+            handleChange={handleChange}
+            value={values[name]}
+            children={children}
+            errors={errors}
+            inputRefs={inputRefs}
+         />
+      )
    }
 }
+
 export const Field = ({ field }) => {
-   const { label, id, name, errors } = field
+
+   const { label, id, name, errors, element } = field
    return (
-      <div key={id} className="input">
+      <div key={id} className={`field ${element}`}>
          <label htmlFor={String(id)}>{label}</label>
          {InputElement(field)}
-         <p className='error'>{errors[name]}</p>
+         <p className='error'>{errors?.[name]}</p>
       </div>
    )
 }

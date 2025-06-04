@@ -44,7 +44,6 @@ export const FormSwimming = () => {
 
    return (
       <form onSubmit={handleSubmit}>
-         <h1>Swimming</h1>
          {
             swimming.map((field) => <Field
                key={field.id}

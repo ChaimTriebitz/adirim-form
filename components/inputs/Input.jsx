@@ -1,6 +1,6 @@
 
 
-export const Input = ({  value, type = 'text', name, id, ref, handleChange }) => {
+export const Input = ({ value, type = 'text', name, id, ref, handleChange }) => {
 
    return (
       <input

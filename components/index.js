@@ -8,8 +8,10 @@ import { TextArea } from "./inputs/TextArea";
 import { Select } from "./inputs/Select";
 import { Signature } from "./inputs/Signature.jsx";
 import { ChoiceCheckBox } from "./inputs/ChoiceCheckBox.jsx";
+import { DynamicGroups } from "./inputs/DynamicGroups.jsx";
 
 export {
+   DynamicGroups,
    FormAddOns,
    FormPersonal,
    FormSwimming,

@@ -17,7 +17,7 @@ export const FormPersonal = () => {
       setErrors(p => ({ ...p, [name]: undefined }))
    }
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault()
       const result = schema.safeParse(values)
 
@@ -38,7 +38,25 @@ export const FormPersonal = () => {
 
       } else {
          setErrors({})
-         console.log(values)
+             try {
+            const res = await fetch('/api/add-ons', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(values),
+            })
+
+            const data = await res.json()
+            if (data.success) {
+               alert('Data saved!')
+            } else {
+               alert('Failed to save data.')
+            }
+         } catch (error) {
+            console.error('Submit error:', error)
+            alert('Something went wrong.')
+         }
       }
    }
 

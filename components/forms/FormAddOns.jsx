@@ -17,7 +17,7 @@ export const FormAddOns = () => {
       setErrors(p => ({ ...p, [name]: undefined }))
    }
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault()
       const result = schema.safeParse(values)
 
@@ -39,12 +39,31 @@ export const FormAddOns = () => {
       } else {
          setErrors({})
          console.log(values)
+         // send to backend
+         try {
+            const res = await fetch('/api/add-ons', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(values),
+            })
+
+            const data = await res.json()
+            if (data.success) {
+               alert('Data saved!')
+            } else {
+               alert('Failed to save data.')
+            }
+         } catch (error) {
+            console.error('Submit error:', error)
+            alert('Something went wrong.')
+         }
       }
    }
 
    return (
       <form onSubmit={handleSubmit}>
-         <h1>Add Ons</h1>
          {
             addOns.map((field) => <Field
                key={field.id}

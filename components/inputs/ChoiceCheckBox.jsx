@@ -16,7 +16,7 @@ export const ChoiceCheckBox = ({ name, id, ref, options, handleChange }) => {
       <div className="choice-checkbox">
          {
             options.map(option =>
-               <div className="option">
+               <div className="option" key={option.id}>
                   <label htmlFor={option.id}>{option.label}</label>
                   <input
                      key={option.id}

@@ -9,12 +9,16 @@ form {
    flex-wrap: wrap;
    margin: auto;
 
-   .input {
+   .field {
       padding: 1em;
       gap: 0;
       width: 100%;
       max-width: 300px;
       background: $c3;
+
+      &.dynamic-groups {
+         max-width: 100%;
+      }
    }
 
    p.error {
@@ -38,5 +42,11 @@ form {
       width: 100%;
       flex: 0 0 100%;
       margin: 1em 0;
+   }
+
+   .dynamic-groups {
+      .group {
+         flex-direction: row;
+      }
    }
 }
