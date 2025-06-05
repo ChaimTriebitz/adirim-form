@@ -3,7 +3,7 @@ export const TextArea = ({value, name, id, ref, handleChange }) => {
 
    return (
       <textarea
-         id={String(id)}
+         id={id}
          name={name}
          onChange={(e) => handleChange(e.target.name, e.target.value)}
          ref={ref}

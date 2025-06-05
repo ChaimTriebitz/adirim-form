@@ -2,7 +2,7 @@
 import React, { useMemo, useState } from 'react'
 import { Field } from '..'
 
-export const DynamicGroups = ({ values, name, id, inputRefs, handleChange, children, errors, }) => {
+export const DynamicGroups = ({ values, name, id, inputRefs, handleChange, children, error, }) => {
    const initGroup = useMemo(() => {
       return children.map(({ name, id }) => ({ name, id, value: undefined }))
    }, [children])

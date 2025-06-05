@@ -1,6 +1,4 @@
-import { FormPersonal } from "./forms/FormPersonal";
-import { FormSwimming } from "./forms/FormSwimming.jsx";
-import { FormAddOns } from "./forms/FormAddOns.jsx";
+import { Form } from "./forms/Form.jsx";
 import { Field } from "./forms/Field.jsx";
 
 import { Input } from "./inputs/Input";
@@ -11,12 +9,11 @@ import { ChoiceCheckBox } from "./inputs/ChoiceCheckBox.jsx";
 import { DynamicGroups } from "./inputs/DynamicGroups.jsx";
 
 export {
-   DynamicGroups,
-   FormAddOns,
-   FormPersonal,
-   FormSwimming,
+   Form,
    Field,
+
    ChoiceCheckBox,
+   DynamicGroups,
    Input,
    TextArea,
    Select,

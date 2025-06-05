@@ -1,6 +1,21 @@
 import { ChoiceCheckBox, DynamicGroups, Input, Select, Signature, TextArea } from '@/components'
-const InputElement = (field) => {
-   const { element, id, name, type, options, handleChange, values, inputRefs, children, errors } = field
+
+
+export const Field = ({ field }) => {
+
+   const { label, id, error, element } = field
+
+   return (
+      <div key={id} className={`field ${element}`}>
+         <label htmlFor={id}>{label}</label>
+         {InputElement(field)}
+         <p className='error'>{error}</p>
+      </div>
+   )
+}
+
+function InputElement(field) {
+   const { element, id, name, type, options, handleChange, values, inputRefs, children, error } = field
 
    switch (element) {
       case 'input':
@@ -27,7 +42,11 @@ const InputElement = (field) => {
          )
       case 'signature':
          return (
-            <Signature handleChange={handleChange} />
+            <Signature
+               handleChange={handleChange}
+               name={name}
+               value={values[name]}
+            />
          )
       case 'textarea': return (
          <TextArea
@@ -58,23 +77,11 @@ const InputElement = (field) => {
             handleChange={handleChange}
             value={values[name]}
             children={children}
-            errors={errors}
+            error={error}
             inputRefs={inputRefs}
          />
       )
    }
-}
-
-export const Field = ({ field }) => {
-
-   const { label, id, name, errors, element } = field
-   return (
-      <div key={id} className={`field ${element}`}>
-         <label htmlFor={String(id)}>{label}</label>
-         {InputElement(field)}
-         <p className='error'>{errors?.[name]}</p>
-      </div>
-   )
 }
 
 

@@ -1,4 +1,4 @@
-import { FormAddOns, FormPersonal, FormSwimming } from "@/components";
+import { FormAddOns, FormPersonal, FormSwimming,Form } from "@/components";
 import Image from "next/image";
 
 export default function Home() {
@@ -11,9 +11,7 @@ export default function Home() {
             height={38}
             priority
          />
-         <FormPersonal />
-         <FormSwimming />
-         <FormAddOns />
+         <Form />
       </main>
    );
 }

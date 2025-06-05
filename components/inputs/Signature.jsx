@@ -1,20 +1,26 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 
-export const Signature = ({ handleChange }) => {
+export const Signature = ({ handleChange, name, value }) => {
    const sigCanvasRef = useRef(null);
+
+   useEffect(() => {
+      if (value && sigCanvasRef.current) {
+         sigCanvasRef.current.fromDataURL(value);
+      }
+   }, [value]);
 
    const clear = () => {
       sigCanvasRef.current.clear();
-      handleChange('signature', null)
+      handleChange(name, null)
    };
 
    const save = () => {
       if (!sigCanvasRef.current.isEmpty()) {
          const dataUrl = sigCanvasRef.current.toDataURL('image/png');
-         handleChange('signature', dataUrl)
+         handleChange(name, dataUrl)
       }
    };
 

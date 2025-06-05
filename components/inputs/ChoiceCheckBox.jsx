@@ -10,7 +10,7 @@ export const ChoiceCheckBox = ({ name, id, ref, options, handleChange }) => {
 
    useEffect(() => {
       handleChange(name, checkedOption)
-   }, [])
+   }, [checkedOption])
 
    return (
       <div className="choice-checkbox">
