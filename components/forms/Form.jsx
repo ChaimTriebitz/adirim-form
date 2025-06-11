@@ -1,10 +1,10 @@
 'use client'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { Field } from '@/components'
 import { createZodSchema } from '@/utils'
 import { addOns, personal, swimming } from '@/fields'
 
-export const Form = () => {
+export const Form = ({ step, setStep }) => {
    const initForms = [
       {
          index: 0,
@@ -36,18 +36,23 @@ export const Form = () => {
    const inputRefs = useRef({})
 
    const activeForm = useMemo(() => {
-      return forms.find(f => f.active)
-   }, [forms])
+      return forms.find(f => f.name === step)
+   }, [forms, step])
 
    const handleChange = (name, value) => {
-      setForms(prevForms => prevForms.map(form => form.active ? (
-         {
-            ...form,
-            values: { ...form.values, [name]: value }
-         }
-      ) : form
-      ))
+      setForms(prevForms =>
+         prevForms.map(form =>
+            form.active
+               ? {
+                  ...form,
+                  values: { ...form.values, [name]: value },
+                  errors: { ...form.errors, [name]: undefined }, // 👈 Clear error
+               }
+               : form
+         )
+      )
    }
+
 
    const handleStep = (e) => {
       const result = validate(activeForm.fields, activeForm.values)
@@ -63,13 +68,7 @@ export const Form = () => {
          return
       }
 
-      setForms(prevForms => prevForms.map((form, index) => (
-         {
-            ...form,
-            active: index === +e.target.value + activeForm.index
-         }
-      )
-      ))
+      setStep(forms[+e.target.value + activeForm.index]?.name)
    }
 
    const validate = (fields, values) => {
@@ -101,7 +100,6 @@ export const Form = () => {
          alert('Something went wrong.')
       }
    }
-   console.log(activeForm);
 
    return (
       <form onSubmit={handleSubmit} >
@@ -115,7 +113,6 @@ export const Form = () => {
          <div className="buttons">
             <button value={-1} disabled={activeForm.index === 0} onClick={handleStep} type="button">Back</button>
             <button value={1} disabled={activeForm.index === forms.length - 1} onClick={handleStep} type="button">Next</button>
-
          </div>
       </form>
    )

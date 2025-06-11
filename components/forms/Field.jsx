@@ -3,11 +3,11 @@ import { ChoiceCheckBox, DynamicGroups, Input, Select, Signature, TextArea } fro
 
 export const Field = ({ field }) => {
 
-   const { label, id, error, element } = field
+   const { label, id, error, element, required } = field
 
    return (
       <div key={id} className={`field ${element}`}>
-         <label htmlFor={id}>{label}</label>
+         <label htmlFor={id}>{label}{required ? '*' : ''}</label>
          {InputElement(field)}
          <p className='error'>{error}</p>
       </div>

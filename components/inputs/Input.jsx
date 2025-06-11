@@ -9,7 +9,7 @@ export const Input = ({ value, type = 'text', name, id, ref, handleChange }) => 
          type={type}
          onChange={(e) => handleChange(e.target.name, e.target.value)}
          ref={ref}
-         value={value}
+         value={value || ''}
       />
    )
 }

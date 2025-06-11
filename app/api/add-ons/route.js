@@ -1,5 +1,8 @@
-import { prismaClient } from '@/utils/prisma'
+import { prismaClient } from '@/utils/prisma';
 import { NextResponse } from 'next/server'
+
+console.log(prismaClient);
+
 
 export async function POST(request) {
    let data;

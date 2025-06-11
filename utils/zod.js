@@ -1,37 +1,62 @@
 import { z } from 'zod'
 
 export const createZodSchema = (fields) => {
-   const shape= {}
+   const shape = {}
 
    fields.forEach((field) => {
-      let schema
+      let baseSchema
 
+      // STEP 1: Create base schema without required/optional logic
       if (field.element === 'input') {
          switch (field.type) {
             case 'text':
-            case 'email':
-               schema = z.string().min(1, `${field.label} is required`)
-               break
-            case 'number':
-               schema = z
-                  .preprocess(val => (val === '' ? undefined : Number(val)), z.number({ invalid_type_error: `${field.label} must be a number` }))
-                  .refine(val => !isNaN(val ), { message: `${field.label} must be a valid number` })
-               break
             case 'datetime-local':
-               schema = z.string().min(1, `${field.label} is required`) // Could also validate date string format
+               baseSchema = z.string()
                break
+
+            case 'email':
+               baseSchema = z.string().email(`${field.label} must be a valid email`)
+               break
+
+            case 'number':
+               baseSchema = z.preprocess(
+                  val => {
+                     if (val === '' || val === null || val === undefined) return undefined
+                     const num = Number(val)
+                     return isNaN(num) ? val : num
+                  },
+                  z.number({
+                     invalid_type_error: `${field.label} must be a number`,
+                     required_error: `${field.label} is required`
+                  })
+               )
+               break
+
             default:
-               schema = z.string()
+               baseSchema = z.string()
          }
       } else if (field.element === 'textarea') {
-         schema = z.string().optional()
+         baseSchema = z.string()
       } else if (field.element === 'select') {
-         const options = (field).options?.map(opt => opt.name)
-         schema = z.enum(options, { errorMap: () => ({ message: `${field.label} is required` }) })
+         const options = field.options?.map(opt => opt.name)
+         baseSchema = z.enum(options, {
+            errorMap: () => ({ message: `${field.label} is required` })
+         })
       } else if (field.element === 'signature') {
-         schema = z.string().min(1, `${field.label} is required`)
+         baseSchema = z.string()
       } else {
-         schema = z.string().optional()
+         baseSchema = z.string()
+      }
+
+      // STEP 2: Apply required/optional rule ONCE here
+      let schema = baseSchema
+      if (!field.required) {
+         schema = schema.optional()
+      } else if (
+         baseSchema instanceof z.ZodString &&
+         field.type !== 'email' // email already validates format
+      ) {
+         schema = schema.min(1, `${field.label} is required`)
       }
 
       if (field.name) {
