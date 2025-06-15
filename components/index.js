@@ -1,12 +1,13 @@
-import { Form } from "./forms/Form.jsx";
-import { Field } from "./forms/Field.jsx";
+import { Form } from "./forms/Form";
+import { Field } from "./forms/Field";
 
 import { Input } from "./inputs/Input";
 import { TextArea } from "./inputs/TextArea";
 import { Select } from "./inputs/Select";
-import { Signature } from "./inputs/Signature.jsx";
-import { ChoiceCheckBox } from "./inputs/ChoiceCheckBox.jsx";
-import { DynamicGroups } from "./inputs/DynamicGroups.jsx";
+import { Signature } from "./inputs/Signature";
+import { ChoiceCheckBox } from "./inputs/ChoiceCheckBox";
+import { Counter } from "./inputs/Counter";
+import { DynamicGroups } from "./inputs/DynamicGroups";
 
 export {
    Form,
@@ -17,4 +18,5 @@ export {
    TextArea,
    Select,
    Signature,
+   Counter
 }

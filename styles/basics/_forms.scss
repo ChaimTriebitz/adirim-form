@@ -10,11 +10,9 @@ form {
    margin: auto;
 
    .field {
-      padding: 1em;
       gap: 0;
       width: 100%;
       max-width: 300px;
-      background: $c3;
 
       &.dynamic-groups {
          max-width: 100%;
@@ -27,15 +25,34 @@ form {
    }
 
    label {
-      color: $c1;
+      color: $c2;
       white-space: pre-wrap;
    }
 
    input,
-   textarea {
+   textarea,
+   select,
+   canvas {
       border: 1px solid $c1;
       min-width: 100%;
       resize: vertical;
+      padding: 0.5em;
+   }
+
+   input[type="date"] {
+      &::-webkit-calendar-picker-indicator {
+         cursor: pointer;
+      }
+   }
+
+   .choice-checkbox {
+      .option {
+         flex-direction: row;
+
+         input {
+            min-width: unset;
+         }
+      }
    }
 
    .buttons {

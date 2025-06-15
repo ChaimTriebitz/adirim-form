@@ -8,7 +8,6 @@ export const Form = ({ step, setStep }) => {
    const initForms = [
       {
          index: 0,
-         active: true,
          name: 'personal',
          fields: personal,
          values: {},
@@ -16,7 +15,6 @@ export const Form = ({ step, setStep }) => {
       },
       {
          index: 1,
-         active: false,
          name: 'swimming',
          fields: swimming,
          values: {},
@@ -24,7 +22,6 @@ export const Form = ({ step, setStep }) => {
       },
       {
          index: 2,
-         active: false,
          name: 'addOns',
          fields: addOns,
          values: {},
@@ -38,15 +35,16 @@ export const Form = ({ step, setStep }) => {
    const activeForm = useMemo(() => {
       return forms.find(f => f.name === step)
    }, [forms, step])
+console.log(forms);
 
    const handleChange = (name, value) => {
       setForms(prevForms =>
          prevForms.map(form =>
-            form.active
+            form.name === activeForm.name
                ? {
                   ...form,
                   values: { ...form.values, [name]: value },
-                  errors: { ...form.errors, [name]: undefined }, // 👈 Clear error
+                  errors: { ...form.errors, [name]: undefined },
                }
                : form
          )
@@ -56,17 +54,17 @@ export const Form = ({ step, setStep }) => {
 
    const handleStep = (e) => {
       const result = validate(activeForm.fields, activeForm.values)
-      if (result.error) {
-         inputRefs?.current?.[result?.error?.issues?.[0]?.path?.[0]]?.focus()
-         setForms(prevForms => prevForms.map(form => form.active ? (
-            {
-               ...form,
-               errors: result?.error?.formErrors?.fieldErrors || {}
-            }
-         ) : form
-         ))
-         return
-      }
+      // if (result.error) {
+      //    inputRefs?.current?.[result?.error?.issues?.[0]?.path?.[0]]?.focus()
+      //    setForms(prevForms => prevForms.map(form => form.name === activeForm.name ? (
+      //       {
+      //          ...form,
+      //          errors: result?.error?.formErrors?.fieldErrors || {}
+      //       }
+      //    ) : form
+      //    ))
+      //    return
+      // }
 
       setStep(forms[+e.target.value + activeForm.index]?.name)
    }
@@ -79,26 +77,30 @@ export const Form = ({ step, setStep }) => {
 
    const handleSubmit = async (e) => {
       e.preventDefault()
-
-      try {
-         const res = await fetch('/api/add-ons', {
-            method: 'POST',
-            headers: {
-               'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(values),
-         })
-
-         const data = await res.json()
-         if (data.success) {
-            alert('Data saved!')
-         } else {
-            alert('Failed to save data.')
-         }
-      } catch (error) {
-         console.error('Submit error:', error)
-         alert('Something went wrong.')
-      }
+      // const combinedValues = forms.reduce((acc, form) => {
+      //    acc[form.name] = form.values
+      //    return acc
+      // }, {})
+   
+      // try {
+      //    const res = await fetch('/api/submit-form', {
+      //       method: 'POST',
+      //       headers: {
+      //          'Content-Type': 'application/json',
+      //       },
+      //       body: JSON.stringify(combinedValues),
+      //    })
+   
+      //    const data = await res.json()
+      //    if (data.success) {
+      //       alert('Data saved!')
+      //    } else {
+      //       alert('Failed to save data.')
+      //    }
+      // } catch (error) {
+      //    console.error('Submit error:', error)
+      //    alert('Something went wrong.')
+      // }
    }
 
    return (
@@ -114,6 +116,7 @@ export const Form = ({ step, setStep }) => {
             <button value={-1} disabled={activeForm.index === 0} onClick={handleStep} type="button">Back</button>
             <button value={1} disabled={activeForm.index === forms.length - 1} onClick={handleStep} type="button">Next</button>
          </div>
+         <button type="submit">Submit</button>
       </form>
    )
 }

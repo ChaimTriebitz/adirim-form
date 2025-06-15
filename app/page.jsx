@@ -1,6 +1,5 @@
 'use client';
 
-import { Form } from "@/components";
 import { useState } from 'react';
 
 
@@ -29,10 +28,10 @@ export default function Home() {
             </div>
          }
 
-         <Form
+         {/* <Form
             step={step}
             setStep={setStep}
-         />
+         /> */}
 
          {
             step === 'swimming' &&

@@ -1,4 +1,4 @@
-import { ChoiceCheckBox, DynamicGroups, Input, Select, Signature, TextArea } from '@/components'
+import { ChoiceCheckBox, Counter, DynamicGroups, Input, Select, Signature, TextArea } from '@/components'
 
 
 export const Field = ({ field }) => {
@@ -18,6 +18,16 @@ function InputElement(field) {
    const { element, id, name, type, options, handleChange, values, inputRefs, children, error } = field
 
    switch (element) {
+      case 'counter':
+         return (
+            <Counter
+               name={name}
+               id={id}
+               handleChange={handleChange}
+               ref={el => inputRefs.current[name] = el}
+               value={values[name]}
+            />
+         )
       case 'input':
          return (
             <Input
