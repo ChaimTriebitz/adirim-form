@@ -1,5 +1,7 @@
 'use client';
 
+import { Form } from '@/components';
+import Image from 'next/image';
 import { useState } from 'react';
 
 
@@ -9,7 +11,22 @@ export default function Home() {
 
    return (
       <main >
-         <h1>Step: {step}</h1>
+         <Image src="/logo.jpg" alt="logo" width={100} height={100}
+            style={{
+               width: '100%',
+               height: '100px',
+               objectFit: 'contain',
+               marginTop:'1em',
+            }}
+            priority
+            unoptimized
+            quality={100}
+            loading='eager'
+            placeholder='blur'
+            blurDataURL='/logo.jpg'
+
+         />
+          <h3>Please fill out the form below to register your child for Camp Adirim 2025 </h3>
 
          {
             step === 'swimming' &&
@@ -28,10 +45,10 @@ export default function Home() {
             </div>
          }
 
-         {/* <Form
+         <Form
             step={step}
             setStep={setStep}
-         /> */}
+         />
 
          {
             step === 'swimming' &&
@@ -44,11 +61,14 @@ export default function Home() {
          {
             step === 'personal' &&
             <div className="personal">
-               <h2><u>REMINDER:</u> Registration closes on כ"ה תמוז - July <sup>31</sup> or when space runs out!</h2>
-               <h3>Each child must have his <u>own</u> printed registration form!</h3>
-               <h3>Please feel free to make copies of this form as needed.</h3>
+               <h3><u>REMINDER:</u></h3>
+               <h3> Registration closes on כ"ה תמוז - July <sup>31</sup></h3>
+               <h3>or when space runs out!</h3>
+               <h4>Each child must have his <u>own</u> printed registration form!</h4>
+               <h4>Please feel free to make copies of this form as needed.</h4>
             </div>
          }
+         <br />
       </main>
    );
 }

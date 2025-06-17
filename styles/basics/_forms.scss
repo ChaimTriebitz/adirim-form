@@ -17,6 +17,15 @@ form {
       &.dynamic-groups {
          max-width: 100%;
       }
+
+      &.signature {
+         max-width: unset;
+
+         >* {
+            max-width: 300px;
+            margin: auto;
+         }
+      }
    }
 
    p.error {
@@ -25,7 +34,7 @@ form {
    }
 
    label {
-      color: $c2;
+      color: $c1;
       white-space: pre-wrap;
    }
 
@@ -55,7 +64,12 @@ form {
       }
    }
 
+   button{
+   border: 1px solid $c1;
+   }
+
    .buttons {
+      max-width: 300px;
       width: 100%;
       flex: 0 0 100%;
       margin: 1em 0;

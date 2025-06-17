@@ -9,6 +9,8 @@ datasource db {
 
 model Personal {
    id                     Int       @id @default(autoincrement())
+   createdAt              DateTime  @default(now())
+   updatedAt              DateTime  @updatedAt
    first_name             String
    last_name              String
    e_date                 DateTime
@@ -41,6 +43,8 @@ model Personal {
 
 model Swimming {
    id                 Int      @id @default(autoincrement())
+   createdAt          DateTime @default(now())
+   updatedAt          DateTime @updatedAt
    is_swimmer         Boolean
    signature_swimming String   @db.Text
    personal           Personal @relation(fields: [personalId], references: [id])
@@ -49,6 +53,8 @@ model Swimming {
 
 model AddsOn {
    id             Int      @id @default(autoincrement())
+   createdAt      DateTime @default(now())
+   updatedAt      DateTime @updatedAt
    size_add_ons   String
    amount_add_ons Int
    personal       Personal @relation(fields: [personalId], references: [id])

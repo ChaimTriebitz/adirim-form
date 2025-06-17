@@ -77,30 +77,33 @@ console.log(forms);
 
    const handleSubmit = async (e) => {
       e.preventDefault()
-      // const combinedValues = forms.reduce((acc, form) => {
-      //    acc[form.name] = form.values
-      //    return acc
-      // }, {})
+      const combinedValues = forms.reduce((acc, form) => {
+         acc[form.name] = form.values
+         return acc
+      }, {})
+
+
+       
    
-      // try {
-      //    const res = await fetch('/api/submit-form', {
-      //       method: 'POST',
-      //       headers: {
-      //          'Content-Type': 'application/json',
-      //       },
-      //       body: JSON.stringify(combinedValues),
-      //    })
+      try {
+         const res = await fetch('/api/submit-form', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(combinedValues),
+         })
    
-      //    const data = await res.json()
-      //    if (data.success) {
-      //       alert('Data saved!')
-      //    } else {
-      //       alert('Failed to save data.')
-      //    }
-      // } catch (error) {
-      //    console.error('Submit error:', error)
-      //    alert('Something went wrong.')
-      // }
+         const data = await res.json()
+         if (data.success) {
+            alert('Data saved!')
+         } else {
+            alert('Failed to save data.')
+         }
+      } catch (error) {
+         console.error('Submit error:', error)
+         alert('Something went wrong.')
+      }
    }
 
    return (
@@ -116,7 +119,7 @@ console.log(forms);
             <button value={-1} disabled={activeForm.index === 0} onClick={handleStep} type="button">Back</button>
             <button value={1} disabled={activeForm.index === forms.length - 1} onClick={handleStep} type="button">Next</button>
          </div>
-         <button type="submit">Submit</button>
+         {step===''&& <button type="submit">Submit</button>}
       </form>
    )
 }
