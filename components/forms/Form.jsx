@@ -119,7 +119,7 @@ console.log(forms);
             <button value={-1} disabled={activeForm.index === 0} onClick={handleStep} type="button">Back</button>
             <button value={1} disabled={activeForm.index === forms.length - 1} onClick={handleStep} type="button">Next</button>
          </div>
-         {step===''&& <button type="submit">Submit</button>}
+         {step==='addOns'&& <button type="submit">Submit</button>}
       </form>
    )
 }
