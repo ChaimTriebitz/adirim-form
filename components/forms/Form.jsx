@@ -35,7 +35,7 @@ export const Form = ({ step, setStep }) => {
    const activeForm = useMemo(() => {
       return forms.find(f => f.name === step)
    }, [forms, step])
-console.log(forms);
+   console.log(forms);
 
    const handleChange = (name, value) => {
       setForms(prevForms =>
@@ -83,8 +83,8 @@ console.log(forms);
       }, {})
 
 
-       
-   
+
+
       try {
          const res = await fetch('/api/submit-form', {
             method: 'POST',
@@ -93,7 +93,7 @@ console.log(forms);
             },
             body: JSON.stringify(combinedValues),
          })
-   
+
          const data = await res.json()
          if (data.success) {
             alert('Data saved!')
@@ -119,7 +119,7 @@ console.log(forms);
             <button value={-1} disabled={activeForm.index === 0} onClick={handleStep} type="button">Back</button>
             <button value={1} disabled={activeForm.index === forms.length - 1} onClick={handleStep} type="button">Next</button>
          </div>
-         {step==='addOns'&& <button type="submit">Submit</button>}
+         {step === 'addOns' && <button type="submit">Submit</button>}
       </form>
    )
 }

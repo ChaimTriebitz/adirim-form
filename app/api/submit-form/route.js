@@ -1,5 +1,7 @@
 import { prismaClient } from '@/utils/prisma'
 
+export const runtime = 'nodejs'
+
 function sanitizeData(rawData) {
    const personal = {
       first_name: rawData?.personal?.first_name || "",
