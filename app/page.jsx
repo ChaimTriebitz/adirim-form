@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 export default function Home() {
 
-   const [step, setStep] = useState('personal');
+   const [step, setStep] = useState('camper');
 
    return (
       <main >
@@ -59,8 +59,8 @@ export default function Home() {
          }
 
          {
-            step === 'personal' &&
-            <div className="personal">
+            step === 'camper' &&
+            <div className="camper">
                <h3><u>REMINDER:</u></h3>
                <h3> Registration closes on כ"ה תמוז - July <sup>31</sup></h3>
                <h3>or when space runs out!</h3>

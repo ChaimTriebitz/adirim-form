@@ -4,5 +4,11 @@
 @use 'basics/_elements.scss';
 @use 'basics/_forms.scss';
 @use 'basics/_pages.scss';
+@use 'basics/_icons.scss';
+// components
+@use 'cmps/_Search.scss';
+@use 'cmps/_ActionsBar.scss';
+@use 'cmps/_Table.scss';
+@use 'cmps/_Details.scss';
 
 

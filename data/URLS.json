@@ -1,0 +1,26 @@
+{
+   "base": "http://localhost:5000/",
+   "localhost": "http://localhost:5000/",
+   "live": "https://vito-back.onrender.com/",
+   "auth": {
+      "register": "api/auth/register",
+      "login": "api/auth/login"
+   },
+   "private": {
+      "get": "api/private"
+   },
+   "banks": {
+      "create": "api/banks/create",
+      "createMany": "api/banks/createMany",
+      "get": "api/banks",
+      "remove": "api/banks/remove",
+      "update": "api/banks/update"
+   },
+   "lenders": {
+      "create": "api/lenders/create",
+      "createMany": "api/lenders/createMany",
+      "get": "api/lenders",
+      "remove": "api/lenders/remove",
+      "update": "api/lenders/update"
+   }
+}

@@ -2,28 +2,28 @@
 import { useMemo, useRef, useState } from 'react'
 import { Field } from '@/components'
 import { createZodSchema } from '@/utils'
-import { addOns, personal, swimming } from '@/fields'
+import { addOns, camper, confirmation } from '@/fields'
 
 export const Form = ({ step, setStep }) => {
    const initForms = [
       {
          index: 0,
-         name: 'personal',
-         fields: personal,
+         name: 'camper',
+         fields: camper,
          values: {},
          errors: {}
       },
       {
          index: 1,
-         name: 'swimming',
-         fields: swimming,
+         name: 'addOns',
+         fields: addOns,
          values: {},
          errors: {}
       },
       {
          index: 2,
-         name: 'addOns',
-         fields: addOns,
+         name: 'confirmation',
+         fields: confirmation,
          values: {},
          errors: {}
       },
@@ -119,7 +119,7 @@ export const Form = ({ step, setStep }) => {
             <button value={-1} disabled={activeForm.index === 0} onClick={handleStep} type="button">Back</button>
             <button value={1} disabled={activeForm.index === forms.length - 1} onClick={handleStep} type="button">Next</button>
          </div>
-         {step === 'addOns' && <button type="submit">Submit</button>}
+         {step === 'confirmation' && <button type="submit">Submit</button>}
       </form>
    )
 }

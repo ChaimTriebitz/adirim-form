@@ -1,0 +1,40 @@
+.icon {
+   width: 25px;
+   height: 25px;
+   min-width: 25px;
+}
+
+.remove {
+   width: 27px;
+   height: 27px;
+   position: relative;
+
+   &:hover #trash-cover {
+      animation: opencover 1s forwards;
+   }
+
+   #trash-bin {
+      height: 70%;
+      position: absolute;
+      bottom: 2px;
+   }
+
+   #trash-cover {
+      height: 5px;
+      width: 20px;
+      position: absolute;
+      top: 0;
+      transform-origin: right;
+   }
+}
+
+@keyframes opencover {
+
+   0% {
+      transform: rotateZ(0deg);
+   }
+
+   100% {
+      transform: rotateZ(33deg);
+   }
+}

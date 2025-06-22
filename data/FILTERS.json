@@ -1,0 +1,52 @@
+{
+   "banks": {
+      "categories": {
+         "field": {
+            "name": "Lender Type",
+            "name": "lender"
+         },
+         "options": [
+            {
+               "id": 1,
+               "option_display": "All",
+               "option_value": ""
+            },
+            {
+               "id": 2,
+               "option_display": "CRE",
+               "option_value": "Commercial Real Estate"
+            },
+            {
+               "id": 3,
+               "option_display": "category3",
+               "option_value": "category3"
+            }
+         ]
+      }
+   },
+   "lenders": {
+      "categories": {
+         "field": {
+            "name": "Lender Type",
+            "name": "lender"
+         },
+         "options": [
+            {
+               "id": 1,
+               "option_display": "All",
+               "option_value": ""
+            },
+            {
+               "id": 2,
+               "option_display": "CRE",
+               "option_value": "Commercial Real Estate"
+            },
+            {
+               "id": 3,
+               "option_display": "category3",
+               "option_value": "category3"
+            }
+         ]
+      }
+   }
+}

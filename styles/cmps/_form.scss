@@ -1,0 +1,53 @@
+.form {
+   flex-direction: column;
+   gap: 1em;
+   padding: 1em;
+
+   .input {
+      align-items: center;
+      justify-content: space-between;
+
+      input {
+         background: $secondary-color;
+      }
+
+   }
+
+   .error {
+      text-align: center;
+      color: $error-color;
+      height: 1.5em;
+   }
+
+
+
+   .input-field {
+      position: relative;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .multi-select {
+         flex-direction: column;
+         background: $secondary-color;
+         padding: 0.5em;
+
+         .multi-select-item {
+            justify-content: space-between;
+            align-items: center;
+         }
+      }
+
+
+      label {
+         color: $highlight-color;
+         flex: 1;
+      }
+
+      .input-item {
+         width: 0%;
+         flex-basis: 75%;
+         background: $secondary-color;
+
+      }
+   }
+}

@@ -1,0 +1,51 @@
+[
+   {
+      "label": "First Name",
+      "name": "first_name",
+      "element": "input",
+      "id": 0
+   },
+   {
+      "label": "Last Name",
+      "name": "last_name",
+      "element": "input",
+      "id": 1
+   },
+   {
+      "label": "Email",
+      "name": "email",
+      "element": "input",
+      "type": "email",
+      "id": 2
+   },
+   {
+      "label": "Phone",
+      "name": "phone",
+      "element": "input",
+      "id": 3
+   },
+   {
+      "label": "Address",
+      "name": "address",
+      "element": "input",
+      "id": 4
+   },
+   {
+      "label": "City",
+      "name": "city",
+      "element": "input",
+      "id": 5
+   },
+   {
+      "label": "State",
+      "name": "state",
+      "element": "input",
+      "id": 6
+   },
+   {
+      "label": "Zip Code",
+      "name": "zip_code",
+      "element": "input",
+      "id": 7
+   }
+]

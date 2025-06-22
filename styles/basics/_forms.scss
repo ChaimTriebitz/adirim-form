@@ -26,33 +26,30 @@ form {
             margin: auto;
          }
       }
-   }
 
-   p.error {
-      color: red;
-      height: 25px;
-   }
+      .counter {
+         flex-direction: row;
+         justify-content: center;
 
-   label {
-      color: $c1;
-      white-space: pre-wrap;
-   }
+         >* {
+            width: 25px;
+            height: 25px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+         }
 
-   input,
-   textarea,
-   select,
-   canvas {
-      border: 1px solid $c1;
-      min-width: 100%;
-      resize: vertical;
-      padding: 0.5em;
-   }
-
-   input[type="date"] {
-      &::-webkit-calendar-picker-indicator {
-         cursor: pointer;
       }
    }
+
+
+
+      button {
+      border: 1px solid $c1;
+   }
+
+
 
    .choice-checkbox {
       .option {
@@ -64,9 +61,7 @@ form {
       }
    }
 
-   button{
-   border: 1px solid $c1;
-   }
+
 
    .buttons {
       max-width: 300px;
@@ -80,4 +75,6 @@ form {
          flex-direction: row;
       }
    }
+
+
 }

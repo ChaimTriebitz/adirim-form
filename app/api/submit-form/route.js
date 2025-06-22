@@ -3,38 +3,38 @@ import { prismaClient } from '@/utils/prisma'
 export const runtime = 'nodejs'
 
 function sanitizeData(rawData) {
-   const personal = {
-      first_name: rawData?.personal?.first_name || "",
-      last_name: rawData?.personal?.last_name || "",
-      e_date: rawData?.personal?.e_date ? new Date(rawData.personal.e_date) : new Date(),
-      h_date: rawData?.personal?.h_date || "",
-      street_and_number: rawData?.personal?.street_and_number || "",
-      neighborhood: rawData?.personal?.neighborhood || "",
-      zip_code: Number(rawData?.personal?.zip_code) || 0,
-      home_number: Number(rawData?.personal?.home_number) || 0,
-      kupha_name: rawData?.personal?.kupha_name || "",
-      kupha_number: Number(rawData?.personal?.kupha_number) || 0,
-      school: rawData?.personal?.school || "",
-      grade_finishing: Number(rawData?.personal?.grade_finishing) || 0,
-      grade_entering: Number(rawData?.personal?.grade_entering) || 0,
-      father_name: rawData?.personal?.father_name || "",
-      father_phone_number: Number(rawData?.personal?.father_phone_number) || 0,
-      mother_name: rawData?.personal?.mother_name || "",
-      mother_phone_number: Number(rawData?.personal?.mother_phone_number) || 0,
-      emergency_name: rawData?.personal?.emergency_name || "",
-      emergency_phone_number: Number(rawData?.personal?.emergency_phone_number) || 0,
-      email: rawData?.personal?.email || "",
-      favorite_activities: rawData?.personal?.favorite_activities || "",
-      dislike_activities: rawData?.personal?.dislike_activities || "",
-      allergies: rawData?.personal?.allergies || "",
-      freinds: rawData?.personal?.freinds || "",
-      enhance: rawData?.personal?.enhance || "",
-      signature_personal: rawData?.personal?.signature_personal || "",
+   const camper = {
+      first_name: rawData?.camper?.first_name || "",
+      last_name: rawData?.camper?.last_name || "",
+      e_date: rawData?.camper?.e_date ? new Date(rawData.camper.e_date) : new Date(),
+      h_date: rawData?.camper?.h_date || "",
+      street_and_number: rawData?.camper?.street_and_number || "",
+      neighborhood: rawData?.camper?.neighborhood || "",
+      zip_code: Number(rawData?.camper?.zip_code) || 0,
+      home_number: Number(rawData?.camper?.home_number) || 0,
+      kupha_name: rawData?.camper?.kupha_name || "",
+      kupha_number: Number(rawData?.camper?.kupha_number) || 0,
+      school: rawData?.camper?.school || "",
+      grade_finishing: Number(rawData?.camper?.grade_finishing) || 0,
+      grade_entering: Number(rawData?.camper?.grade_entering) || 0,
+      father_name: rawData?.camper?.father_name || "",
+      father_phone_number: Number(rawData?.camper?.father_phone_number) || 0,
+      mother_name: rawData?.camper?.mother_name || "",
+      mother_phone_number: Number(rawData?.camper?.mother_phone_number) || 0,
+      emergency_name: rawData?.camper?.emergency_name || "",
+      emergency_phone_number: Number(rawData?.camper?.emergency_phone_number) || 0,
+      email: rawData?.camper?.email || "",
+      favorite_activities: rawData?.camper?.favorite_activities || "",
+      dislike_activities: rawData?.camper?.dislike_activities || "",
+      allergies: rawData?.camper?.allergies || "",
+      freinds: rawData?.camper?.freinds || "",
+      enhance: rawData?.camper?.enhance || "",
+      is_swimmer: !!rawData?.camper?.is_swimmer,
    };
 
-   const swimming = {
-      is_swimmer: !!rawData?.swimming?.is_swimmer,
-      signature_swimming: rawData?.swimming?.signature_swimming || "",
+   const confirmation = {
+      is_confirmed: !!rawData?.confirmation?.is_confirmed || true,
+      signature: rawData?.confirmation?.signature || "",
    };
 
    const addOns = {
@@ -43,8 +43,8 @@ function sanitizeData(rawData) {
    };
 
    return {
-      personal,
-      swimming,
+      camper,
+      confirmation,
       addOns,
    };
 }
@@ -55,14 +55,15 @@ export async function POST(req) {
    try {
       const body = await req.json()
       const sanitizedData = sanitizeData(body)
-      const { personal, swimming, addOns } = sanitizedData
+      const { camper, confirmation, addOns } = sanitizedData
+      // const { camper, confirmation, addOns } = body
 
-      const created = await prismaClient.personal.create({
+      const created = await prismaClient.camper.create({
          data: {
-            ...personal,
-            swimming: {
+            ...camper,
+            confirmation: {
                create: {
-                  ...swimming,
+                  ...confirmation,
                },
             },
             addsOn: {

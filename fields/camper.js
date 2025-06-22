@@ -1,4 +1,4 @@
-export const personal = [
+export const camper = [
    { name: 'first_name', id: 1, label: 'First Name', element: 'input', type: 'text', required: true },
    { name: 'last_name', id: 2, label: 'Last Name', element: 'input', type: 'text', required: true },
    { name: 'e_date', id: 3, label: 'English Date Of Birth', element: 'input', type: 'date', required: true },
@@ -67,12 +67,17 @@ export const personal = [
    { name: 'mother_name', id: 16, label: 'Mothers Name', element: 'input', type: 'text' },
    { name: 'mother_phone_number', id: 17, label: 'Mothers Number', element: 'input', type: 'number' },
    { name: 'emergency_name', id: 18, label: 'Emergency contact (Not Parent!)', element: 'input', type: 'text' },
-   { name: 'emergency_phone_number', id: 19, label: 'Emergency Number (Not Parent!)', element: 'input', type: 'number'},
+   { name: 'emergency_phone_number', id: 19, label: 'Emergency Number (Not Parent!)', element: 'input', type: 'number' },
    { name: 'email', id: 20, label: 'Email', element: 'input', type: 'email', required: true },
    { name: 'favorite_activities', id: 21, label: 'What are your childs favorite activities', element: 'textarea' },
    { name: 'dislike_activities', id: 22, label: 'Which activities does your child dislike', element: 'textarea' },
    { name: 'allergies', id: 23, label: 'Specific Metical Information (allergies etc.)', element: 'textarea' },
    { name: 'freinds', id: 24, label: 'Freinds your child whould like to be with?', element: 'textarea' },
    { name: 'enhance', id: 25, label: 'We would like your child to have a wonderful camp experience. is there any other information that we should know in order to enhance your childs summer?', element: 'textarea' },
-   { name: 'signature_personal', id: 26, label: 'Signature of Parent', element: 'signature', required: true },
+   {
+      name: 'is_confirmed', id: 26, label: 'Does your child know how to swim?', element: 'choice-checkbox', options: [
+         { name: 'yes', label: 'Knows how to swim', id: 1 },
+         { name: 'no', label: 'Does not know how to swim', id: 2 },
+      ]
+   }
 ]

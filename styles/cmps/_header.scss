@@ -1,0 +1,40 @@
+   .search {
+      background: white;
+      border-radius: 5px;
+      position: relative;
+   
+      input {
+         border: none;
+         outline: none;
+         background: inherit;
+         color: black;
+         flex-grow: 1;
+         padding: 0.25em 0.75em;
+         border-radius: 5px;
+         max-width: 200px;
+         padding-right: 2.75em;
+         min-height: 32.5px;
+         box-shadow: 0 0 0px 1000px white inset;
+         -webkit-text-fill-color: black;
+      }
+   
+      input::placeholder {
+         -webkit-text-fill-color: gray;
+      }
+   
+      svg {
+         width: 15px;
+      }
+   
+      label {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         right: 5px;
+         width: 25px;
+   
+         button {
+            width: 100%;
+         }
+      }
+   }

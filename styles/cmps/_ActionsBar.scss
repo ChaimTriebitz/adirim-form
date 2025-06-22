@@ -1,0 +1,12 @@
+@use '../basics/vars' as *;
+
+.actions-bar {
+   padding: 1em;
+   align-items: center;
+   background: $c5;
+   @media (max-width: 700px) {
+      flex-direction: column;
+      
+   }
+
+}

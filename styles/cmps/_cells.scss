@@ -1,0 +1,18 @@
+td {
+   .actions {
+      justify-content: center;
+      align-items: center;
+
+      .select-row {
+         // appearance: none;
+         // aspect-ratio: 1;
+         min-height: 23px;
+         height: 23px;
+         width: 23px;
+         outline: 2px solid $highlight-color;
+         outline-offset: -2px;
+         background: $secondary-color;
+         cursor: pointer;
+      }
+   }
+}

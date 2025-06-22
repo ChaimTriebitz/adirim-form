@@ -1,9 +1,9 @@
-import { personal } from "./personal";
-import { swimming } from "./swimming.js";
+import { camper } from "./camper.js";
+import { confirmation } from "./confirmation.js";
 import { addOns } from "./addOns.js";
 
 export {
+   camper,
    addOns,
-   personal,
-   swimming
+   confirmation
 }

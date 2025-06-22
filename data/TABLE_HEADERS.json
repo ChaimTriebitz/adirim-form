@@ -1,0 +1,67 @@
+[
+   {
+      "label": "Actions",
+      "cell": "multicell",
+      "headers": [
+         {
+            "cell": "select"
+         },
+         {
+            "cell": "details"
+         },
+         {
+            "cell": "remove",
+            "msg": "bank"
+         }
+      ],
+      "id": 0
+   },
+   {
+      "label": "First Name",
+      "name": "first_name",
+      "cell": "text",
+      "id": 1
+   },
+   {
+      "label": "Last Name",
+      "name": "last_name",
+      "cell": "text",
+      "id": 2
+   },
+   {
+      "label": "Email",
+      "name": "email",
+      "cell": "email",
+      "id": 3
+   },
+   {
+      "label": "Phone",
+      "name": "phone",
+      "cell": "phone",
+      "id": 4
+   },
+   {
+      "label": "Address",
+      "name": "address",
+      "cell": "text",
+      "id": 5
+   },
+   {
+      "label": "City",
+      "name": "city",
+      "cell": "text",
+      "id": 6
+   },
+   {
+      "label": "State",
+      "name": "state",
+      "cell": "text",
+      "id": 7
+   },
+   {
+      "label": "Zip Code",
+      "name": "zip_code",
+      "cell": "text",
+      "id": 8
+   }
+]
